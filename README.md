@@ -44,6 +44,7 @@ $ docker --version
 Docker version 28.3.3, build 980b856
 ```
 
+5. 
 
 
 ## Jenkins Installation Process
@@ -101,6 +102,75 @@ http://localhost:8080
 refere following video : https://www.youtube.com/watch?v=-wwOSWygXwU
 
 
+## Kubernetes - kubectl Installation Process
 
+Installing kubectl on Ubuntu 24.04.3 LTS
+
+1. Download kubectl binary
+```bash
+$ curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+
+```
+2. Install kubectl
+
+```bash
+$ sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
+```
+
+3. Test to ensure the version you installed is up-to-date:
+
+```bash
+$ kubectl version --client
+```
+
+Or use this for detailed view of version:
+
+```bash
+$ kubectl version --client --output=yaml
+```
+
+## Kubernetes - minikube Installation Process
+
+Installing minikube on Ubuntu 24.04.3 LTS
+
+1. Download binary binary
+```bash
+$ curl -LO https://github.com/kubernetes/minikube/releases/latest/download/minikube-linux-amd64
+
+```
+2. Install minikube
+
+```bash
+$ sudo install minikube-linux-amd64 /usr/local/bin/minikube
+```
+
+3. Check version
+
+```bash
+$ minikube version
+```
+
+4. start m,inikuiibe with docker as driver( Install Docker Before use this command) :
+
+```bash
+$ minikube start --driver=docker
+```
+if get following output then next command using force
+
+```bash
+minikube start --driver=docker
+😄  minikube v1.36.0 on Ubuntu 24.04
+✨  Using the docker driver based on user configuration
+🛑  The "docker" driver should not be used with root privileges. If you wish to continue as root, use --force.
+💡  If you are running minikube within a VM, consider using --driver=none:
+📘    https://minikube.sigs.k8s.io/docs/reference/drivers/none/
+
+❌  Exiting due to DRV_AS_ROOT: The "docker" driver should not be used with root privileges.
+```
+this command force to use docker as driver
+
+```bash
+$ minikube start --driver=docker --force
+```
 
 
